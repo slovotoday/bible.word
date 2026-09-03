@@ -201,7 +201,7 @@ languageButtons.forEach(button=>{
 button.classList.toggle("active",button.dataset.lang===currentLanguage);
 });
 
-newVerse(true);
+renderVerse();
 }
 
 languageButtons.forEach(button=>{
@@ -288,23 +288,15 @@ localStorage.setItem("kjvCache",JSON.stringify(kjvCache));
 return text;
 }
 
-async function newVerse(force=false){
+async function renderVerse(){
 
-let randomIndex;
+if(lastIndex<0) return;
 
-do{
-randomIndex=Math.floor(Math.random()*verses.length);
-}
-while(!force && randomIndex===lastIndex && verses.length>1);
-
-lastIndex=randomIndex;
-
-const random=verses[randomIndex];
+const random=verses[lastIndex];
 
 const verse=document.getElementById("verse");
 const ref=document.getElementById("ref");
 const logo=document.querySelector(".logo");
-const button=document.querySelector(".layerup");
 
 verse.style.opacity=0;
 ref.style.opacity=0;
@@ -339,6 +331,18 @@ ref.style.opacity=1;
 },180);
 }
 
+function newVerse(){
+
+let randomIndex;
+
+do{
+randomIndex=Math.floor(Math.random()*verses.length);
+}
+while(randomIndex===lastIndex && verses.length>1);
+
+lastIndex=randomIndex;
+renderVerse();
+}
 newVerse();
 </script>
 
