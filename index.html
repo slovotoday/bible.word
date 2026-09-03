@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Слово для тебе</title>
+<title>Слово для тебе — LayerUp Studio</title>
 
 <style>
 
@@ -63,16 +63,16 @@ color:#9c9c9c;
 transition:.35s;
 }
 
-/* Instagram */
+/* LayerUp Studio */
 
-.instagram{
+.layerup{
 display:inline-flex;
 align-items:center;
-gap:8px;
+gap:10px;
 
-margin-top:54px;
+margin-top:48px;
 
-padding:10px 18px;
+padding:11px 18px;
 
 border:1px solid #ececec;
 border-radius:999px;
@@ -88,17 +88,27 @@ color:#8d8d8d;
 transition:.25s;
 }
 
-.instagram:hover{
+.layerup:hover{
 color:#111;
 border-color:#d7d7d7;
 background:#fff;
 transform:translateY(-1px);
 }
 
-.instagram svg{
+.layerup svg{
 width:15px;
 height:15px;
 fill:currentColor;
+}
+
+.layerup .arrow{
+font-size:14px;
+line-height:1;
+transition:.25s;
+}
+
+.layerup:hover .arrow{
+transform:translate(2px,-2px);
 }
 
 </style>
@@ -118,16 +128,14 @@ fill:currentColor;
 <div id="ref" class="ref"></div>
 
 <a
-class="instagram"
+class="layerup"
 href="https://layerupstudio.pl/uk"
 target="_blank"
+rel="noopener noreferrer"
 onclick="event.stopPropagation();">
 
-<svg viewBox="0 0 24 24">
-<path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10.5 3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6z"/>
-</svg>
-
-@united.youth.warsaw
+<span>LayerUp Studio</span>
+<span class="arrow">↗</span>
 
 </a>
 
