@@ -153,8 +153,8 @@ color:#fff;
 
 </head>
 
-<body onclick="newVerse()">
-<div class="language" onclick="event.stopPropagation();">
+<body onclick="if(!event.target.closest('.language')) newVerse()">
+<div class="language" onclick="event.stopPropagation();" onmousedown="event.stopPropagation();">
 <button type="button" data-lang="uk">UA</button>
 <button type="button" data-lang="pl">PL</button>
 <button type="button" data-lang="en">EN</button>
@@ -194,149 +194,143 @@ let kjvCache=JSON.parse(localStorage.getItem("kjvCache") || "{}");
 const languageButtons=document.querySelectorAll("[data-lang]");
 
 function setLanguage(language){
-currentLanguage=language;
-localStorage.setItem("language",currentLanguage);
+  currentLanguage=language;
+  localStorage.setItem("language",currentLanguage);
 
-languageButtons.forEach(button=>{
-button.classList.toggle("active",button.dataset.lang===currentLanguage);
-});
+  languageButtons.forEach(button=>{
+    button.classList.toggle("active",button.dataset.lang===currentLanguage);
+  });
 
-newVerse(true);
+  // Змінюємо тільки мову поточного вірша
+  renderVerse();
 }
 
 languageButtons.forEach(button=>{
-button.addEventListener("click",()=>{
-setLanguage(button.dataset.lang);
-});
+  button.addEventListener("click",(event)=>{
+    event.stopPropagation();
+    setLanguage(button.dataset.lang);
+  });
 });
 
 languageButtons.forEach(button=>{
-button.classList.toggle("active",button.dataset.lang===currentLanguage);
+  button.classList.toggle("active",button.dataset.lang===currentLanguage);
 });
 
 const kjvBookMap={
-"Буття":"genesis","Вихід":"exodus","Левит":"leviticus","Числа":"numbers",
-"Повторення Закону":"deuteronomy","Ісуса Навина":"joshua","Суддів":"judges",
-"Рут":"ruth","1 Самуїла":"1-samuel","2 Самуїла":"2-samuel","1 Царів":"1-kings",
-"2 Царів":"2-kings","1 Хронік":"1-chronicles","2 Хронік":"2-chronicles",
-"Ездри":"ezra","Неемії":"nehemiah","Естер":"esther","Йова":"job",
-"Псалом":"psalms","Приповістей":"proverbs","Екклезіаста":"ecclesiastes",
-"Пісня над піснями":"song-of-solomon","Ісаї":"isaiah","Єремії":"jeremiah",
-"Плач Єремії":"lamentations","Єзекіїля":"ezekiel","Даниїла":"daniel",
-"Осії":"hosea","Йоіла":"joel","Амоса":"amos","Овдія":"obadiah",
-"Йони":"jonah","Михея":"micah","Наума":"nahum","Авакума":"habakkuk",
-"Софонії":"zephaniah","Огія":"haggai","Захарії":"zechariah","Малахії":"malachi",
-"Матвія":"matthew","Марка":"mark","Луки":"luke","Івана":"john","Дій":"acts",
-"Римлян":"romans","1 Коринтян":"1-corinthians","2 Коринтян":"2-corinthians",
-"Галатів":"galatians","Ефесян":"ephesians","Филип’ян":"philippians",
-"Колосян":"colossians","1 Солунян":"1-thessalonians","2 Солунян":"2-thessalonians",
-"1 Тимофія":"1-timothy","2 Тимофія":"2-timothy","Тита":"titus","Филимона":"philemon",
-"Євреїв":"hebrews","Якова":"james","1 Петра":"1-peter","2 Петра":"2-peter",
-"1 Івана":"1-john","2 Івана":"2-john","3 Івана":"3-john","Юди":"jude",
-"Об’явлення":"revelation"
+  "Буття":"genesis","Вихід":"exodus","Левит":"leviticus","Числа":"numbers",
+  "Повторення Закону":"deuteronomy","Ісуса Навина":"joshua","Суддів":"judges",
+  "Рут":"ruth","1 Самуїла":"1-samuel","2 Самуїла":"2-samuel","1 Царів":"1-kings",
+  "2 Царів":"2-kings","1 Хронік":"1-chronicles","2 Хронік":"2-chronicles",
+  "Ездри":"ezra","Неемії":"nehemiah","Естер":"esther","Йова":"job",
+  "Псалом":"psalms","Приповістей":"proverbs","Екклезіаста":"ecclesiastes",
+  "Пісня над піснями":"song-of-solomon","Ісаї":"isaiah","Єремії":"jeremiah",
+  "Плач Єремії":"lamentations","Єзекіїля":"ezekiel","Даниїла":"daniel",
+  "Осії":"hosea","Йоіла":"joel","Амоса":"amos","Овдія":"obadiah",
+  "Йони":"jonah","Михея":"micah","Наума":"nahum","Авакума":"habakkuk",
+  "Софонії":"zephaniah","Огія":"haggai","Захарії":"zechariah","Малахії":"malachi",
+  "Матвія":"matthew","Марка":"mark","Луки":"luke","Івана":"john","Дій":"acts",
+  "Римлян":"romans","1 Коринтян":"1-corinthians","2 Коринтян":"2-corinthians",
+  "Галатів":"galatians","Ефесян":"ephesians","Филип’ян":"philippians",
+  "Колосян":"colossians","1 Солунян":"1-thessalonians","2 Солунян":"2-thessalonians",
+  "1 Тимофія":"1-timothy","2 Тимофія":"2-timothy","Тита":"titus","Филимона":"philemon",
+  "Євреїв":"hebrews","Якова":"james","1 Петра":"1-peter","2 Петра":"2-peter",
+  "1 Івана":"1-john","2 Івана":"2-john","3 Івана":"3-john","Юди":"jude",
+  "Об’явлення":"revelation"
 };
 
 const refBookMap={
-"Псалом":"psalms","Ісаї":"isaiah","Приповістей":"proverbs","Римлян":"romans",
-"Филип’ян":"philippians","Івана":"john","1 Петра":"1-peter","Єремії":"jeremiah",
-"Ісуса Навина":"joshua","Матвія":"matthew","1 Коринтян":"1-corinthians",
-"1 Івана":"1-john","Колосян":"colossians","Ефесян":"ephesians","Галатів":"galatians",
-"Дій":"acts","Об’явлення":"revelation","Євреїв":"hebrews","Марка":"mark",
-"2 Коринтян":"2-corinthians","2 Тимофія":"2-timothy","Якова":"james",
-"Михея":"micah","Плач Єремії":"lamentations","1 Хронік":"1-chronicles",
-"Авакума":"habakkuk","Захарії":"zechariah","Повторення Закону":"deuteronomy",
-"1 Солунян":"1-thessalonians"
+  "Псалом":"psalms","Ісаї":"isaiah","Приповістей":"proverbs","Римлян":"romans",
+  "Филип’ян":"philippians","Івана":"john","1 Петра":"1-peter","Єремії":"jeremiah",
+  "Ісуса Навина":"joshua","Матвія":"matthew","1 Коринтян":"1-corinthians",
+  "1 Івана":"1-john","Колосян":"colossians","Ефесян":"ephesians","Галатів":"galatians",
+  "Дій":"acts","Об’явлення":"revelation","Євреїв":"hebrews","Марка":"mark",
+  "2 Коринтян":"2-corinthians","2 Тимофія":"2-timothy","Якова":"james",
+  "Михея":"micah","Плач Єремії":"lamentations","1 Хронік":"1-chronicles",
+  "Авакума":"habakkuk","Захарії":"zechariah","Повторення Закону":"deuteronomy",
+  "1 Солунян":"1-thessalonians"
 };
 
 async function getKJV(ref){
-if(kjvCache[ref]) return kjvCache[ref];
-
-let bookName=null;
-let bookSlug=null;
-
-for(const name of Object.keys(refBookMap).sort((a,b)=>b.length-a.length)){
-if(ref.startsWith(name+" ")){
-bookName=name;
-bookSlug=refBookMap[name];
-break;
-}
-}
-
-if(!bookSlug) throw new Error("Unknown Bible book: "+ref);
-
-const passage=ref.slice(bookName.length+1);
-const match=passage.match(/^(\d+):(\d+)(?:-(\d+))?$/);
-if(!match) throw new Error("Unsupported reference: "+ref);
-
-const chapter=match[1];
-const from=parseInt(match[2],10);
-const to=match[3] ? parseInt(match[3],10) : from;
-
-const url=`https://cdn.jsdelivr.net/gh/jsubroto/bible-api/versions/kjv/books/${bookSlug}/chapters/${chapter}.json`;
-const response=await fetch(url);
-if(!response.ok) throw new Error("KJV request failed");
-
-const data=await response.json();
-const verses=data.verses || [];
-const selected=verses.filter(v=>v.verse>=from && v.verse<=to).map(v=>v.text);
-
-if(!selected.length) throw new Error("KJV passage not found");
-
-const text=selected.join(" ");
-kjvCache[ref]=text;
-localStorage.setItem("kjvCache",JSON.stringify(kjvCache));
-return text;
+  if(kjvCache[ref]) return kjvCache[ref];
+  let bookName=null;
+  let bookSlug=null;
+  for(const name of Object.keys(refBookMap).sort((a,b)=>b.length-a.length)){
+    if(ref.startsWith(name+" ")){
+      bookName=name;
+      bookSlug=refBookMap[name];
+      break;
+    }
+  }
+  if(!bookSlug) throw new Error("Unknown Bible book: "+ref);
+  const passage=ref.slice(bookName.length+1);
+  const match=passage.match(/^(\d+):(\d+)(?:-(\d+))?$/);
+  if(!match) throw new Error("Unsupported reference: "+ref);
+  const chapter=match[1];
+  const from=parseInt(match[2],10);
+  const to=match[3] ? parseInt(match[3],10) : from;
+  const url=`https://cdn.jsdelivr.net/gh/jsubroto/bible-api/versions/kjv/books/${bookSlug}/chapters/${chapter}.json`;
+  const response=await fetch(url);
+  if(!response.ok) throw new Error("KJV request failed");
+  const data=await response.json();
+  const verses=data.verses || [];
+  const selected=verses.filter(v=>v.verse>=from && v.verse<=to).map(v=>v.text);
+  if(!selected.length) throw new Error("KJV passage not found");
+  const text=selected.join(" ");
+  kjvCache[ref]=text;
+  localStorage.setItem("kjvCache",JSON.stringify(kjvCache));
+  return text;
 }
 
-async function newVerse(force=false){
+let renderId=0;
 
-let randomIndex;
+async function renderVerse(){
+  if(lastIndex<0) return;
 
-do{
-randomIndex=Math.floor(Math.random()*verses.length);
+  const id=++renderId;
+  const random=verses[lastIndex];
+  const verse=document.getElementById("verse");
+  const ref=document.getElementById("ref");
+  const logo=document.querySelector(".logo");
+
+  verse.style.opacity=0;
+  ref.style.opacity=0;
+
+  let text=random.text;
+  let reference=random.ref;
+
+  if(currentLanguage==="en"){
+    logo.innerText="A WORD FOR YOU";
+    reference=random.ref_en;
+    try{
+      text=await getKJV(random.ref);
+    }catch(error){
+      text="Unable to load the King James Version. Please try again.";
+    }
+  }else if(currentLanguage==="pl"){
+    logo.innerText="SŁOWO DLA CIEBIE";
+    text=random.pl;
+    reference=random.ref_pl;
+  }else{
+    logo.innerText="СЛОВО ДЛЯ ТЕБЕ";
+  }
+
+  // Старий запит не має права перезаписати нову вибрану мову
+  if(id!==renderId) return;
+
+  verse.innerText=text;
+  ref.innerText=reference;
+  verse.style.opacity=1;
+  ref.style.opacity=1;
 }
-while(!force && randomIndex===lastIndex && verses.length>1);
 
-lastIndex=randomIndex;
+async function newVerse(){
+  let randomIndex;
+  do{
+    randomIndex=Math.floor(Math.random()*verses.length);
+  }while(randomIndex===lastIndex && verses.length>1);
 
-const random=verses[randomIndex];
-
-const verse=document.getElementById("verse");
-const ref=document.getElementById("ref");
-const logo=document.querySelector(".logo");
-const button=document.querySelector(".layerup");
-
-verse.style.opacity=0;
-ref.style.opacity=0;
-
-setTimeout(async ()=>{
-let text=random.text;
-let reference=random.ref;
-
-if(currentLanguage==="en"){
-logo.innerText="A WORD FOR YOU";
-try{
-text=await getKJV(random.ref);
-reference=random.ref_en;
-}catch(error){
-text="Unable to load the King James Version. Please try again.";
-reference=random.ref_en;
-}
-}else if(currentLanguage==="pl"){
-logo.innerText="SŁOWO DLA CIEBIE";
-text=random.pl;
-reference=random.ref_pl;
-}else{
-logo.innerText="СЛОВО ДЛЯ ТЕБЕ";
-}
-
-verse.innerText=text;
-ref.innerText=reference;
-
-verse.style.opacity=1;
-ref.style.opacity=1;
-
-},180);
+  lastIndex=randomIndex;
+  renderVerse();
 }
 
 newVerse();
