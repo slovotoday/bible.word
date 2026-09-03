@@ -186,99 +186,11 @@ onclick="event.stopPropagation();">
 
 <script>
 
-const bibleBooks = [{"osis": "gen", "en": "Genesis", "uk": "Буття", "pl": "Rodzaju", "chapters": 50}, {"osis": "exod", "en": "Exodus", "uk": "Вихід", "pl": "Wyjścia", "chapters": 40}, {"osis": "lev", "en": "Leviticus", "uk": "Левит", "pl": "Kapłańska", "chapters": 27}, {"osis": "num", "en": "Numbers", "uk": "Числа", "pl": "Liczb", "chapters": 36}, {"osis": "deut", "en": "Deuteronomy", "uk": "Повторення Закону", "pl": "Powtórzonego Prawa", "chapters": 34}, {"osis": "josh", "en": "Joshua", "uk": "Ісуса Навина", "pl": "Jozuego", "chapters": 24}, {"osis": "judg", "en": "Judges", "uk": "Суддів", "pl": "Sędziów", "chapters": 21}, {"osis": "ruth", "en": "Ruth", "uk": "Рут", "pl": "Rut", "chapters": 4}, {"osis": "1sam", "en": "1 Samuel", "uk": "1 Самуїла", "pl": "1 Samuela", "chapters": 31}, {"osis": "2sam", "en": "2 Samuel", "uk": "2 Самуїла", "pl": "2 Samuela", "chapters": 24}, {"osis": "1kgs", "en": "1 Kings", "uk": "1 Царів", "pl": "1 Królewska", "chapters": 22}, {"osis": "2kgs", "en": "2 Kings", "uk": "2 Царів", "pl": "2 Królewska", "chapters": 25}, {"osis": "1chr", "en": "1 Chronicles", "uk": "1 Хронік", "pl": "1 Kronik", "chapters": 29}, {"osis": "2chr", "en": "2 Chronicles", "uk": "2 Хронік", "pl": "2 Kronik", "chapters": 36}, {"osis": "ezra", "en": "Ezra", "uk": "Ездри", "pl": "Ezdrasza", "chapters": 10}, {"osis": "neh", "en": "Nehemiah", "uk": "Неемії", "pl": "Nehemiasza", "chapters": 13}, {"osis": "esth", "en": "Esther", "uk": "Естер", "pl": "Estery", "chapters": 10}, {"osis": "job", "en": "Job", "uk": "Йова", "pl": "Hioba", "chapters": 42}, {"osis": "ps", "en": "Psalms", "uk": "Псалом", "pl": "Psalmów", "chapters": 150}, {"osis": "prov", "en": "Proverbs", "uk": "Приповістей", "pl": "Przysłów", "chapters": 31}, {"osis": "eccl", "en": "Ecclesiastes", "uk": "Екклезіаста", "pl": "Koheleta", "chapters": 12}, {"osis": "song", "en": "Song of Solomon", "uk": "Пісня над піснями", "pl": "Pieśń nad Pieśniami", "chapters": 8}, {"osis": "isa", "en": "Isaiah", "uk": "Ісаї", "pl": "Izajasza", "chapters": 66}, {"osis": "jer", "en": "Jeremiah", "uk": "Єремії", "pl": "Jeremiasza", "chapters": 52}, {"osis": "lam", "en": "Lamentations", "uk": "Плач Єремії", "pl": "Lamentacji", "chapters": 5}, {"osis": "ezek", "en": "Ezekiel", "uk": "Єзекіїля", "pl": "Ezechiela", "chapters": 48}, {"osis": "dan", "en": "Daniel", "uk": "Даниїла", "pl": "Daniela", "chapters": 12}, {"osis": "hos", "en": "Hosea", "uk": "Осії", "pl": "Ozeasza", "chapters": 14}, {"osis": "joel", "en": "Joel", "uk": "Йоіла", "pl": "Joela", "chapters": 3}, {"osis": "amos", "en": "Amos", "uk": "Амоса", "pl": "Amosa", "chapters": 9}, {"osis": "obad", "en": "Obadiah", "uk": "Овдія", "pl": "Abdiasza", "chapters": 1}, {"osis": "jonah", "en": "Jonah", "uk": "Йони", "pl": "Jonasza", "chapters": 4}, {"osis": "mic", "en": "Micah", "uk": "Михея", "pl": "Micheasza", "chapters": 7}, {"osis": "nah", "en": "Nahum", "uk": "Наума", "pl": "Nahuma", "chapters": 3}, {"osis": "hab", "en": "Habakkuk", "uk": "Авакума", "pl": "Habakuka", "chapters": 3}, {"osis": "zeph", "en": "Zephaniah", "uk": "Софонії", "pl": "Sofoniasza", "chapters": 3}, {"osis": "hag", "en": "Haggai", "uk": "Огія", "pl": "Aggeusza", "chapters": 2}, {"osis": "zech", "en": "Zechariah", "uk": "Захарії", "pl": "Zachariasza", "chapters": 14}, {"osis": "mal", "en": "Malachi", "uk": "Малахії", "pl": "Malachiasza", "chapters": 4}, {"osis": "matt", "en": "Matthew", "uk": "Матвія", "pl": "Mateusza", "chapters": 28}, {"osis": "mark", "en": "Mark", "uk": "Марка", "pl": "Marka", "chapters": 16}, {"osis": "luke", "en": "Luke", "uk": "Луки", "pl": "Łukasza", "chapters": 24}, {"osis": "john", "en": "John", "uk": "Івана", "pl": "Jana", "chapters": 21}, {"osis": "acts", "en": "Acts", "uk": "Дій", "pl": "Dziejów Apostolskich", "chapters": 28}, {"osis": "rom", "en": "Romans", "uk": "Римлян", "pl": "Rzymian", "chapters": 16}, {"osis": "1cor", "en": "1 Corinthians", "uk": "1 Коринтян", "pl": "1 Koryntian", "chapters": 16}, {"osis": "2cor", "en": "2 Corinthians", "uk": "2 Коринтян", "pl": "2 Koryntian", "chapters": 13}, {"osis": "gal", "en": "Galatians", "uk": "Галатів", "pl": "Galatów", "chapters": 6}, {"osis": "eph", "en": "Ephesians", "uk": "Ефесян", "pl": "Efezjan", "chapters": 6}, {"osis": "phil", "en": "Philippians", "uk": "Филип’ян", "pl": "Filipian", "chapters": 4}, {"osis": "col", "en": "Colossians", "uk": "Колосян", "pl": "Kolosan", "chapters": 4}, {"osis": "1thess", "en": "1 Thessalonians", "uk": "1 Солунян", "pl": "1 Tesaloniczan", "chapters": 5}, {"osis": "2thess", "en": "2 Thessalonians", "uk": "2 Солунян", "pl": "2 Tesaloniczan", "chapters": 3}, {"osis": "1tim", "en": "1 Timothy", "uk": "1 Тимофія", "pl": "1 Tymoteusza", "chapters": 6}, {"osis": "2tim", "en": "2 Timothy", "uk": "2 Тимофія", "pl": "2 Tymoteusza", "chapters": 4}, {"osis": "titus", "en": "Titus", "uk": "Тита", "pl": "Tytusa", "chapters": 3}, {"osis": "phlm", "en": "Philemon", "uk": "Филимона", "pl": "Filemona", "chapters": 1}, {"osis": "heb", "en": "Hebrews", "uk": "Євреїв", "pl": "Hebrajczyków", "chapters": 13}, {"osis": "jas", "en": "James", "uk": "Якова", "pl": "Jakuba", "chapters": 5}, {"osis": "1pet", "en": "1 Peter", "uk": "1 Петра", "pl": "1 Piotra", "chapters": 5}, {"osis": "2pet", "en": "2 Peter", "uk": "2 Петра", "pl": "2 Piotra", "chapters": 3}, {"osis": "1john", "en": "1 John", "uk": "1 Івана", "pl": "1 Jana", "chapters": 5}, {"osis": "2john", "en": "2 John", "uk": "2 Івана", "pl": "2 Jana", "chapters": 1}, {"osis": "3john", "en": "3 John", "uk": "3 Івана", "pl": "3 Jana", "chapters": 1}, {"osis": "jude", "en": "Jude", "uk": "Юди", "pl": "Judy", "chapters": 1}, {"osis": "rev", "en": "Revelation", "uk": "Об’явлення", "pl": "Objawienia", "chapters": 22}];
+const verses = [{"text": "Господь — мій Пастир, я не матиму нестачі", "ref": "Псалом 23:1", "en": "The Lord is my shepherd; I shall not want.", "pl": "Pan jest moim pasterzem, niczego mi nie braknie.", "ref_en": "Psalm 23:1", "ref_pl": "Psalm 23:1"}, {"text": "Не бійся, бо Я з тобою, не тривожся, бо Я твій Бог. Я зміцню тебе і допоможу тобі, підтримаю тебе правицею Моєї праведності", "ref": "Ісаї 41:10", "en": "Do not fear, for I am with you; do not be anxious, for I am your God. I will strengthen you and help you; I will uphold you with my righteous right hand.", "pl": "Nie bój się, bo Ja jestem z tobą; nie lękaj się, bo Ja jestem twoim Bogiem. Umocnię cię i pomogę ci, podtrzymam cię prawicą mojej sprawiedliwości.", "ref_en": "Isaiah 41:10", "ref_pl": "Izajasza 41:10"}, {"text": "Надійся на Господа всім своїм серцем, а на власний розум не покладайся", "ref": "Приповістей 3:5", "en": "Trust in the Lord with all your heart, and do not lean on your own understanding.", "pl": "Zaufaj Panu z całego swego serca i nie polegaj na własnym rozumie.", "ref_en": "Proverbs 3:5", "ref_pl": "Przysłów 3:5"}, {"text": "Ми знаємо, що тим, хто любить Бога і покликаний за Його задумом, усе сприяє до добра", "ref": "Римлян 8:28", "en": "We know that all things work together for good for those who love God and are called according to His purpose.", "pl": "Wiemy, że Bóg współdziała we wszystkim ku dobremu z tymi, którzy Go miłują i są powołani według Jego zamysłu.", "ref_en": "Romans 8:28", "ref_pl": "Rzymian 8:28"}, {"text": "Я все можу в Тому, Хто мене зміцнює", "ref": "Филип’ян 4:13", "en": "I can do all things through Christ who strengthens me.", "pl": "Wszystko mogę w Tym, który mnie umacnia.", "ref_en": "Philippians 4:13", "ref_pl": "Filipian 4:13"}, {"text": "Мир залишаю вам, Мій мир Я даю вам. Я даю вам не так, як дає світ. Нехай не тривожиться ваше серце і не лякається", "ref": "Івана 14:27", "en": "Peace I leave with you; My peace I give you. I do not give to you as the world gives. Let not your heart be troubled or afraid.", "pl": "Pokój zostawiam wam, mój pokój daję wam. Nie tak, jak daje świat, Ja wam daję. Niech się nie trwoży wasze serce ani się nie lęka.", "ref_en": "John 14:27", "ref_pl": "Jana 14:27"}, {"text": "Ні про що не турбуйтеся, а в усьому молитвою та благанням з подякою відкривайте свої прохання Богові", "ref": "Филип’ян 4:6", "en": "Do not be anxious about anything, but in everything, by prayer and petition with thanksgiving, present your requests to God.", "pl": "O nic się nie martwcie, ale we wszystkim przez modlitwę i błaganie z dziękczynieniem przedstawiajcie wasze prośby Bogu.", "ref_en": "Philippians 4:6", "ref_pl": "Filipian 4:6"}, {"text": "Покладіть на Нього всі свої турботи, бо Він дбає про вас", "ref": "1 Петра 5:7", "en": "Cast all your cares on Him, because He cares for you.", "pl": "Powierzcie Mu wszystkie swoje troski, ponieważ On troszczy się o was.", "ref_en": "1 Peter 5:7", "ref_pl": "1 Piotra 5:7"}, {"text": "Бог для нас — притулок і сила, надійна допомога в бідах", "ref": "Псалом 46:2", "en": "God is our refuge and strength, a very present help in trouble.", "pl": "Bóg jest dla nas ucieczką i mocą, pomocą w utrapieniach najpewniejszą.", "ref_en": "Psalm 46:2", "ref_pl": "Psalm 46:2"}, {"text": "Бо Я знаю ті задуми, які маю щодо вас, — говорить Господь, — задуми на добро, а не на зло, щоб дати вам майбутнє і надію", "ref": "Єремії 29:11", "en": "For I know the plans I have for you, declares the Lord, plans for good and not for evil, to give you a future and a hope.", "pl": "Albowiem Ja znam zamiary, jakie mam wobec was — mówi Pan — zamiary pełne pokoju, a nie zguby, by zapewnić wam przyszłość i nadzieję.", "ref_en": "Jeremiah 29:11", "ref_pl": "Jeremiasza 29:11"}, {"text": "Поклади на Господа свої турботи, і Він тебе підтримає", "ref": "Псалом 55:23", "en": "Cast your cares on the Lord, and He will sustain you.", "pl": "Zrzuć swą troskę na Pana, a On cię podtrzyma.", "ref_en": "Psalm 55:23", "ref_pl": "Psalm 55:23"}, {"text": "Чи ж Я не наказав тобі: будь мужнім і сильним? Не бійся і не лякайся, бо з тобою Господь, твій Бог, куди б ти не пішов", "ref": "Ісуса Навина 1:9", "en": "Have I not commanded you? Be strong and courageous. Do not be afraid or discouraged, for the Lord your God is with you wherever you go.", "pl": "Czyż ci nie nakazałem: Bądź mężny i mocny? Nie bój się i nie lękaj, bo Pan, Bóg twój, jest z tobą wszędzie, dokądkolwiek pójdziesz.", "ref_en": "Joshua 1:9", "ref_pl": "Jozuego 1:9"}, {"text": "Господь — моє світло і моє спасіння: кого мені боятися?", "ref": "Псалом 27:1", "en": "The Lord is my light and my salvation; whom shall I fear?", "pl": "Pan jest moim światłem i zbawieniem: kogóż mam się lękać?", "ref_en": "Psalm 27:1", "ref_pl": "Psalm 27:1"}, {"text": "А ті, що надіються на Господа, відновлять сили, піднімуть крила, мов орли, побіжать — і не втомляться, підуть — і не знесиляться", "ref": "Ісаї 40:31", "en": "Those who hope in the Lord will renew their strength; they will rise on wings like eagles, run and not grow weary, walk and not faint.", "pl": "Lecz ci, którzy pokładają nadzieję w Panu, odzyskują siły, otrzymują skrzydła jak orły, biegną bez zmęczenia, bez znużenia idą.", "ref_en": "Isaiah 40:31", "ref_pl": "Izajasza 40:31"}, {"text": "Шукайте насамперед Царства Божого та Його праведності, а все це вам додасться", "ref": "Матвія 6:33", "en": "Seek first the kingdom of God and His righteousness, and all these things will be added to you.", "pl": "Starajcie się najpierw o królestwo Boże i o Jego sprawiedliwość, a wszystko to będzie wam dodane.", "ref_en": "Matthew 6:33", "ref_pl": "Mateusza 6:33"}, {"text": "Господь за мене — я не злякаюся. Що може зробити мені людина?", "ref": "Псалом 118:6", "en": "The Lord is for me; I will not be afraid. What can man do to me?", "pl": "Pan jest ze mną, nie będę się lękał. Cóż może mi uczynić człowiek?", "ref_en": "Psalm 118:6", "ref_pl": "Psalm 118:6"}, {"text": "Ім’я Господа — міцна вежа: праведник утікає до неї й перебуває в безпеці", "ref": "Приповістей 18:10", "en": "The name of the Lord is a strong tower; the righteous run to it and are safe.", "pl": "Imię Pana jest mocną wieżą; sprawiedliwy w niej się schroni i jest bezpieczny.", "ref_en": "Proverbs 18:10", "ref_pl": "Przysłów 18:10"}, {"text": "Довір Господу свій шлях і надійся на Нього — і Він подіє", "ref": "Псалом 37:5", "en": "Commit your way to the Lord; trust in Him, and He will act.", "pl": "Powierz Panu swoją drogę, zaufaj Mu, a On sam będzie działał.", "ref_en": "Psalm 37:5", "ref_pl": "Psalm 37:5"}, {"text": "Будьте мужніми та сильними, не бійтеся... бо Господь, твій Бог, Сам іде з тобою", "ref": "Повторення Закону 31:6", "en": "Be strong and courageous; do not be afraid, for the Lord your God Himself goes with you.", "pl": "Bądźcie mężni i silni, nie bójcie się... bo Pan, Bóg wasz, sam idzie z wami.", "ref_en": "Deuteronomy 31:6", "ref_pl": "Powtórzonego Prawa 31:6"}, {"text": "Підводжу свої очі до гір: звідки прийде мені допомога? Моя допомога від Господа, Який створив небо і землю", "ref": "Псалом 121:1-2", "en": "I lift up my eyes to the mountains: where does my help come from? My help comes from the Lord, the Maker of heaven and earth.", "pl": "Wznoszę swe oczy ku górom: skąd nadejdzie mi pomoc? Pomoc moja od Pana, który stworzył niebo i ziemię.", "ref_en": "Psalm 121:1-2", "ref_pl": "Psalm 121:1-2"}, {"text": "Любов довго терпить, любов милосердствує, не заздрить, любов не хваstatusться, не пишається", "ref": "1 Коринтян 13:4", "en": "Love is patient, love is kind. It does not envy, it does not boast, it is not proud.", "pl": "Miłość cierpliwa jest, łaskawa jest. Miłość nie zazdrości, nie przechwala się, nie unosi się pychą.", "ref_en": "1 Corinthians 13:4", "ref_pl": "1 Koryntian 13:4"}, {"text": "А тепер залишаються віра, надія, любов — оці три, але найбільша з них — любов", "ref": "1 Коринтян 13:13", "en": "And now these three remain: faith, hope and love. But the greatest of these is love.", "pl": "Tak więc trwają wiara, nadzieja i miłość — te trzy; z nich zaś największa jest miłość.", "ref_en": "1 Corinthians 13:13", "ref_pl": "1 Koryntian 13:13"}, {"text": "Хто не любить, той не пізнав Бога, тому що Бог є любов", "ref": "1 Івана 4:8", "en": "Whoever does not love does not know God, because God is love.", "pl": "Kto nie miłuje, nie zna Boga, bo Bóg jest miłością.", "ref_en": "1 John 4:8", "ref_pl": "1 Jana 4:8"}, {"text": "Ніхто не має більшої любові за ту, коли хтось життя своє віддає за своїх друзів", "ref": "Івана 15:13", "en": "Greater love has no one than this: that someone lays down his life for his friends.", "pl": "Nikt nie ma większej miłości od tej, gdy ktoś życie swoje oddaje za przyjaciół swoich.", "ref_en": "John 15:13", "ref_pl": "Jana 15:13"}, {"text": "Ми любимо Його, бо Він перший полюбив нас", "ref": "1 Івана 4:19", "en": "We love Him because He first loved us.", "pl": "My miłujemy, ponieważ On pierwszy nas umiłował.", "ref_en": "1 John 4:19", "ref_pl": "1 Jana 4:19"}, {"text": "Люби Господа Бога свого всім серцем своїм... Люби свого ближнього, як самого себе", "ref": "Матвія 22:37-39", "en": "Love the Lord your God with all your heart... Love your neighbor as yourself.", "pl": "Będziesz miłował Pana, Boga swego, całym swoim sercem... Będziesz miłował swego bliźniego jak siebie samego.", "ref_en": "Matthew 22:37-39", "ref_pl": "Mateusza 22:37-39"}, {"text": "Усе у вас хай робиться з любов’ю", "ref": "1 Коринтян 16:14", "en": "Let everything you do be done in love.", "pl": "Wszystko, co czynicie, niech się dokonuje w miłości.", "ref_en": "1 Corinthians 16:14", "ref_pl": "1 Koryntian 16:14"}, {"text": "А понад усе це одягніться в любов, яка є союзом досконалості", "ref": "Колосян 3:14", "en": "And above all these put on love, which binds everything together in perfect harmony.", "pl": "Na to wszystko zaś przyobleczcie miłość, która jest więzią doskonałości.", "ref_en": "Colossians 3:14", "ref_pl": "Kolosan 3:14"}, {"text": "Будьте ж один до одного лагідними, милосердними, прощаючи один одному, як і Бог у Христі простив вам", "ref": "Ефесян 4:32", "en": "Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you.", "pl": "Bądźcie dla siebie nawzajem dobrzy i miłosierni, przebaczając sobie nawzajem, tak jak i Bóg wam przebaczył w Chrystusie.", "ref_en": "Ephesians 4:32", "ref_pl": "Efezjan 4:32"}, {"text": "Насамперед майте щиру любов один до одного, бо любов покриває багато гріхів", "ref": "1 Петра 4:8", "en": "Above all, love each other deeply, because love covers over a multitude of sins.", "pl": "Przede wszystkim miejcie gorącą miłość jedni ku drugim, bo miłość zakrywa wiele grzechów.", "ref_en": "1 Peter 4:8", "ref_pl": "1 Piotra 4:8"}, {"text": "Дітоньки, любімо не словом чи язиком, а ділом та правдою", "ref": "1 Івана 3:18", "en": "Little children, let us not love with words or speech, but with action and in truth.", "pl": "Dzieci, nie miłujmy słowem ani językiem, lecz czynem i prawdą.", "ref_en": "1 John 3:18", "ref_pl": "1 Jana 3:18"}, {"text": "Любов нехай буде нелицемірною; ненавидьте зло, тримайтеся добра", "ref": "Римлян 12:9", "en": "Let love be genuine. Hate what is evil; hold fast to what is good.", "pl": "Miłość niech będzie bez obłudy. Brzydźcie się złem, trzymajcie się dobra.", "ref_en": "Romans 12:9", "ref_pl": "Rzymian 12:9"}, {"text": "Друг любить повсякчас, а в біді стає братом", "ref": "Приповістей 17:17", "en": "A friend loves at all times, and a brother is born for adversity.", "pl": "Przyjaciel kocha w każdym czasie, a brat staje się nim w nieszczęściu.", "ref_en": "Proverbs 17:17", "ref_pl": "Przysłów 17:17"}, {"text": "І як хочете, щоб вам чинили люди, так і ви чиніть їм", "ref": "Луки 6:31", "en": "Do to others as you would have them do to you.", "pl": "Jak chcecie, żeby ludzie wam czynili, tak wy im czyńcie.", "ref_en": "Луки 6:31", "ref_pl": "Луки 6:31"}, {"text": "Адже весь Закон виконується в одному вислові: Люби свого ближнього, як самого себе", "ref": "Галатів 5:14", "en": "For the whole law is fulfilled in one statement: Love your neighbor as yourself.", "pl": "Całe bowiem Prawo wypełnia się w tym jednym nakazie: Będziesz miłował swego bliźniego jak siebie samego.", "ref_en": "Galatians 5:14", "ref_pl": "Galatów 5:14"}, {"text": "Бо так Бог полюбив світ, що дав Свого Єдинородного Сина, щоб кожен, хто вірить у Нього, не загинув, але мав життя вічне", "ref": "Івана 3:16", "en": "For God so loved the world that He gave His one and only Son, that whoever believes in Him shall not perish but have eternal life.", "pl": "Tak bowiem Bóg umiłował świat, że dał swojego Jednorodzonego Syna, aby każdy, kto w Niego wierzy, nie zginął, ale miał życie wieczne.", "ref_en": "John 3:16", "ref_pl": "Jana 3:16"}, {"text": "Адже ви спасенні благодаттю через віру, і це не від вас, це дар Божий; не від діл, щоб ніхто не хвалився", "ref": "Ефесян 2:8-9", "en": "For you are saved by grace through faith, and this is not from yourselves; it is the gift of God, not by works, so that no one can boast.", "pl": "Łaską bowiem jesteście zbawieni przez wiarę. I to nie jest z was, lecz jest darem Boga; nie z uczynków, aby się nikt nie chlubił.", "ref_en": "Ephesians 2:8-9", "ref_pl": "Efezjan 2:8-9"}, {"text": "Бо якщо ти своїми устами визнаєш Ісуса Господом і повіриш у своєму серці, що Бог воскресив Його з мертвих, то спасешся", "ref": "Римлян 10:9", "en": "If you confess with your mouth that Jesus is Lord and believe in your heart that God raised Him from the dead, you will be saved.", "pl": "Jeśli ustami swoimi wyznasz, że Jezus jest Panem, i w sercu swoim uwierzysz, że Bóg wskrzesił Go z martwych, będziesz zbawiony.", "ref_en": "Romans 10:9", "ref_pl": "Rzymian 10:9"}, {"text": "Каже йому Ісус: Я є дорога, і правда, і життя. Ніхто не приходить до Отця, як тільки через Мене", "ref": "Івана 14:6", "en": "Jesus said: I am the way, and the truth, and the life. No one comes to the Father except through Me.", "pl": "Jezus mówi do niego: Ja jestem drogą, prawdą i życiem. Nikt nie przychodzi do Ojca inaczej jak tylko przeze Mnie.", "ref_en": "John 14:6", "ref_pl": "Jana 14:6"}, {"text": "Адже плата за гріх — смерть, а Божий дар — вічне життя в Христі Ісусі, нашому Господі", "ref": "Римлян 6:23", "en": "For the wages of sin is death, but the gift of God is eternal life in Christ Jesus our Lord.", "pl": "Albowiem zapłatą za grzech jest śmierć, a łaska Boża to życie wieczne w Chrystusie Jezusie, Panu naszym.", "ref_en": "Romans 6:23", "ref_pl": "Rzymian 6:23"}, {"text": "І ні в кому іншому немає спасіння, бо під небом немає іншого імені, даного людям, яким належало б нам спастися", "ref": "Дій 4:12", "en": "There is salvation in no one else, for there is no other name under heaven given to mankind by which we must be saved.", "pl": "I nie ma w żadnym innym zbawienia, gdyż nie dano ludziom pod niebem żadnego innego imienia, w którym moglibyśmy być zbawieni.", "ref_en": "Acts 4:12", "ref_pl": "Dziejów Apostolskich 4:12"}, {"text": "Ось Я стою під дверима і стукаю. Якщо хтось почує Мій голос і відчинить двері, Я ввійду до нього", "ref": "Об’явлення 3:20", "en": "Behold, I stand at the door and knock. If anyone hears My voice and opens the door, I will come in to him.", "pl": "Oto stoję u drzwi i kołaczę. Jeśli ktoś usłyszy mój głos i drzwi otworzy, wejdę do niego.", "ref_en": "Revelation 3:20", "ref_pl": "Objawienia 3:20"}, {"text": "Але Бог виявляє Свою любов до нас тим, що Христос помер за нас, коли ми були ще грішниками", "ref": "Римлян 5:8", "en": "But God demonstrates His love for us in this: while we were still sinners, Christ died for us.", "pl": "Bóg zaś okazuje nam swoją miłość przez to, że Chrystus umarł za nas, gdy byliśmy jeszcze grzesznikami.", "ref_en": "Romans 5:8", "ref_pl": "Rzymian 5:8"}, {"text": "Віра є підставою сподіваного, доказом речей невидимих", "ref": "Євреїв 11:1", "en": "Faith is the assurance of things hoped for, the conviction of things not seen.", "pl": "Wiara jest poręką tych dóbr, których się spodziewamy, dowodem tych rzeczywistości, których nie widzimy.", "ref_en": "Hebrews 11:1", "ref_pl": "Hebrajczyków 11:1"}, {"text": "Ісус же сказав йому: ... Усе можливе тому, хто вірить", "ref": "Марка 9:23", "en": "Jesus said to him: ... Everything is possible for the one who believes.", "pl": "Jezus powiedział mu: ... Wszystko jest możliwe dla tego, kto wierzy.", "ref_en": "Mark 9:23", "ref_pl": "Marka 9:23"}, {"text": "Сказав їй Ісус: Я є воскресіння і життя; хто вірить у Мене, хоч і помре, житиме", "ref": "Івана 11:25", "en": "Jesus said to her: I am the resurrection and the life; whoever believes in Me, though he dies, shall live.", "pl": "Jezus powiedział do niej: Ja jestem zmartwychwstaniem i życiem. Kto we Mnie wierzy, choćby umarł, żyć będzie.", "ref_en": "John 11:25", "ref_pl": "Jana 11:25"}, {"text": "І вже не живу я, а живе в мені Христос", "ref": "Галатів 2:20", "en": "I no longer live, but Christ lives in me.", "pl": "Teraz zaś już nie ja żyję, lecz żyje we mnie Chrystus.", "ref_en": "Galatians 2:20", "ref_pl": "Galatów 2:20"}, {"text": "Тому, коли хтось у Христі, той — нове створіння; старе минуло, ось сталося нове", "ref": "2 Коринтян 5:17", "en": "Therefore, if anyone is in Christ, he is a new creation; the old has gone, the new has come.", "pl": "Jeżeli więc ktoś pozostaje w Chrystusie, jest nowym stworzeniem. To, co dawne, minęło, a oto wszystko stało się nowe.", "ref_en": "2 Corinthians 5:17", "ref_pl": "2 Koryntian 5:17"}, {"text": "А тим, які прийняли Його, дав їм владу стати Божими дітьми — тим, які вірять у Його Ім’я", "ref": "Івана 1:12", "en": "To all who received Him, He gave the right to become children of God—to those who believe in His name.", "pl": "Wszystkim, którzy Go przyjęli, dał moc, aby się stali dziećmi Bożymi — tym, którzy wierzą w Jego imię.", "ref_en": "John 1:12", "ref_pl": "Jana 1:12"}, {"text": "Хто має Сина, той має життя; хто не має Сина Божого, той не має життя", "ref": "1 Івана 5:12", "en": "Whoever has the Son has life; whoever does not have the Son of God does not have life.", "pl": "Kto ma Syna, ma życie; kto nie ma Syna Bożego, nie ma życia.", "ref_en": "1 John 5:12", "ref_pl": "1 Jana 5:12"}, {"text": "Твоє Слово — світильник для моїх ніг і світло для моєї стежки", "ref": "Псалом 119:105", "en": "Your word is a lamp for my feet and a light on my path.", "pl": "Słowo Twoje jest lampą dla moich stóp i światłem na mojej ścieżce.", "ref_en": "Psalm 119:105", "ref_pl": "Psalm 119:105"}, {"text": "Якщо комусь із вас бракує мудрості, нехай просить у Бога, Який дає всім щедро і не дорікає, — і буде дана йому", "ref": "Якова 1:5", "en": "If any of you lacks wisdom, let him ask God, who gives generously to all without finding fault, and it will be given to him.", "pl": "Jeśli komuś z was brakuje mądrości, niech prosi Boga, który daje wszystkim hojnie i bez wypominania, a będzie mu dana.", "ref_en": "James 1:5", "ref_pl": "Jakuba 1:5"}, {"text": "Страх перед Господом — початок мудрості", "ref": "Приповістей 1:7", "en": "The fear of the Lord is the beginning of wisdom.", "pl": "Bojaźń Pana jest początkiem mądrości.", "ref_en": "Proverbs 1:7", "ref_pl": "Przysłów 1:7"}, {"text": "Усе Писання богонатхненне й корисне для навчання, для докору, для виправлення, для виховання в праведності", "ref": "2 Тимофія 3:16", "en": "All Scripture is God-breathed and useful for teaching, rebuking, correcting and training in righteousness.", "pl": "Wszelkie Pismo jest natchnione przez Boga i pożyteczne do nauczania, do wykrywania błędów, do poprawiania i wychowywania w sprawiedliwości.", "ref_en": "2 Timothy 3:16", "ref_pl": "2 Tymoteusza 3:16"}, {"text": "Тож підкоріться Богові, протистаньте дияволу — і він утече від вас", "ref": "Якова 4:7", "en": "Submit yourselves, then, to God. Resist the devil, and he will flee from you.", "pl": "Poddajcie się więc Bogu, przeciwstawcie się diabłu, a ucieknie od was.", "ref_en": "James 4:7", "ref_pl": "Jakuba 4:7"}, {"text": "Просіть — і дасться вам; шукайте — і знайдете; стукайте — і відчинять вам", "ref": "Mатвія 7:7", "en": "Ask and it will be given to you; seek and you will find; knock and the door will be opened to you.", "pl": "Proście, a będzie wam dane; szukajcie, a znajdziecie; kołaczcie, a otworzą wam.", "ref_en": "Mатвія 7:7", "ref_pl": "Mатвія 7:7"}, {"text": "Понад усе, що зберігається, бережи своє серце, бо з нього б’ють джерела життя", "ref": "Приповістей 4:23", "en": "Above all else, guard your heart, for everything you do flows from it.", "pl": "Z całą pilnością strzeż swego serca, bo z niego tryska źródło życia.", "ref_en": "Proverbs 4:23", "ref_pl": "Przysłów 4:23"}, {"text": "Блаженний чоловік, який не ходить на раду нечестивих... але в Законі Господньому його воля", "ref": "Псалом 1:1-2", "en": "Blessed is the one who does not walk in the counsel of the wicked... but whose delight is in the law of the Lord.", "pl": "Szczęśliwy człowiek, który nie idzie za radą występnych... lecz ma upodobanie w Prawie Pana.", "ref_en": "Psalm 1:1-2", "ref_pl": "Psalm 1:1-2"}, {"text": "Чого Господь вимагає від тебе? Тільки чинити справедливість, любити милосердя і смиренно ходити перед твоїм Богом", "ref": "Михея 6:8", "en": "What does the Lord require of you? Only to act justly, love mercy, and walk humbly with your God.", "pl": "Powiedziano ci, człowiecze, co jest dobre i czego Pan żąda od ciebie: tylko wypełniać prawo, kochać wierność i pokornie chodzić z Bogiem swoim.", "ref_en": "Micah 6:8", "ref_pl": "Micheasza 6:8"}, {"text": "І не пристосовуйтеся до цього віку, але змінюйтеся оновленням вашого розуму", "ref": "Римлян 12:2", "en": "Do not conform to this age, but be transformed by the renewing of your mind.", "pl": "Nie dostosowujcie się do tego świata, lecz przemieniajcie się przez odnawianie umysłu.", "ref_en": "Romans 12:2", "ref_pl": "Rzymian 12:2"}, {"text": "Будьте ж виконавцями слова, а не тільки слухачами, які самі себе обманюють", "ref": "Якова 1:22", "en": "Be doers of the word, and not hearers only, deceiving yourselves.", "pl": "Stawajcie się wykonawcami słowa, a nie tylko słuchaczami, oszukującymi samych siebie.", "ref_en": "James 1:22", "ref_pl": "Jakuba 1:22"}, {"text": "Лагідна відповідь відвертає гнів, а образливе слово викликає лють", "ref": "Приповістей 15:1", "en": "A gentle answer turns away wrath, but a harsh word stirs up anger.", "pl": "Łagodna odpowiedź uśmierza gniew, lecz przykre słowo wywołuje złość.", "ref_en": "Proverbs 15:1", "ref_pl": "Przysłów 15:1"}, {"text": "Шукайте Господа, доки Його можна знайти, кличте Його, доки Він близько", "ref": "Ісаї 55:6", "en": "Seek the Lord while He may be found; call on Him while He is near.", "pl": "Szukajcie Pana, gdy się pozwala znaleźć, wzywajcie Go, dopóki jest blisko.", "ref_en": "Isaiah 55:6", "ref_pl": "Izajasza 55:6"}, {"text": "Не обманюйтеся: Бог зневажений не буває. Що людина посіє, те й пожне", "ref": "Галатів 6:7", "en": "Do not be deceived: God is not mocked. Whatever a person sows, that he will also reap.", "pl": "Nie łudźcie się: Bóg nie pozwala z siebie szydzić. Co człowiek sieje, to i żąć będzie.", "ref_en": "Galatians 6:7", "ref_pl": "Galatów 6:7"}, {"text": "Хай так світить ваше світло перед людьми, щоб вони бачили ваші добрі діла і прославляли вашого Отця, Який на небесах", "ref": "Матвія 5:16", "en": "Let your light shine before others, that they may see your good works and glorify your Father in heaven.", "pl": "Tak niech świeci wasze światło przed ludźmi, aby widzieli wasze dobre uczynki i chwalili Ojca waszego, który jest w niebie.", "ref_en": "Matthew 5:16", "ref_pl": "Mateusza 5:16"}, {"text": "Якщо визнаємо свої гріхи, то Він є вірний і праведний, щоб простити нам гріхи й очистити нас від усякої неправди", "ref": "1 Івана 1:9", "en": "If we confess our sins, He is faithful and just to forgive us our sins and cleanse us from all unrighteousness.", "pl": "Jeśli wyznajemy nasze grzechy, On jest wierny i sprawiedliwy i przebaczy nam grzechy, i oczyści nas z wszelkiej nieprawości.", "ref_en": "1 John 1:9", "ref_pl": "1 Jana 1:9"}, {"text": "Прийдіть і розсудимо, — говорить Господь. — Якщо ваші гріхи будуть як багряниця, вибілю як сніг", "ref": "Ісаї 1:18", "en": "Come now, let us reason together, says the Lord. Though your sins are like scarlet, I will make them white as snow.", "pl": "Chodźcie więc, rozsądźmy — mówi Pan. Choćby wasze grzechy były jak szkarłat, jak śnieg wybieleją.", "ref_en": "Isaiah 1:18", "ref_pl": "Izajasza 1:18"}, {"text": "Як далеко схід від заходу, так віддалив Він від нас наші беззаконня", "ref": "Псалом 103:12", "en": "As far as the east is from the west, so far has He removed our transgressions from us.", "pl": "Jak daleko jest wschód od zachodu, tak daleko odsuwa od nas nasze występki.", "ref_en": "Psalm 103:12", "ref_pl": "Psalm 103:12"}, {"text": "Це милість Господня, що ми не вигублені, бо не вичерпалося Його співчуття. Воно оновлюється щоранку; велика Твоя вірність", "ref": "Плач Єремії 3:22-23", "en": "Because of the Lord's mercy we are not consumed, for His compassion never fails. They are new every morning; great is Your faithfulness.", "pl": "Nie wyczerpała się litość Pana, nie ustaje Jego miłosierdzie. Odnawia się ono co rano; wielka jest Twoja wierność.", "ref_en": "Lamentations 3:22-23", "ref_pl": "Lamentacje 3:22-23"}, {"text": "Серце чисте створи в мені, Боже, і духа правого віднови в нутрі моєму", "ref": "Псалом 51:12", "en": "Create in me a clean heart, O God, and renew a right spirit within me.", "pl": "Stwórz, o Boże, we mnie serce czyste i odnów we mnie ducha prawego.", "ref_en": "Psalm 51:12", "ref_pl": "Psalm 51:12"}, {"text": "У Ньому маємо викуплення Його кров’ю, прощення провин, через багатство Його благодаті", "ref": "Ефесян 1:7", "en": "In Him we have redemption through His blood, the forgiveness of sins, according to the riches of His grace.", "pl": "W Nim mamy odkupienie przez Jego krew — odpuszczenie występków, według bogactwa Jego łaski.", "ref_en": "Ephesians 1:7", "ref_pl": "Efezjan 1:7"}, {"text": "Терпіть один одного і прощайте взаємно, якщо хтось проти когось має образу; як Господь простив вам, так само й ви робіть", "ref": "Колосян 3:13", "en": "Bear with one another and forgive each other if anyone has a grievance against someone; as the Lord forgave you, so also do you.", "pl": "Znoście jedni drugich i wybaczajcie sobie nawzajem, jeśliby ktoś miał zarzut przeciw drugiemu; jak Pan wybaczył wam, tak i wy.", "ref_en": "Colossians 3:13", "ref_pl": "Kolosan 3:13"}, {"text": "Отже, тепер немає жодного осуду тим, які в Христі Ісусі", "ref": "Римлян 8:1", "en": "Therefore, there is now no condemnation for those who are in Christ Jesus.", "pl": "Teraz więc nie ma już potępienia dla tych, którzy są w Chrystusie Jezusie.", "ref_en": "Romans 8:1", "ref_pl": "Rzymian 8:1"}, {"text": "Бо Ти, Господи, добрий і прощаєш, і многомилостивий до всіх, хто кличе Тебе", "ref": "Псалом 86:5", "en": "For You, Lord, are good and forgiving, rich in mercy to all who call upon You.", "pl": "Ty bowiem, Panie, jesteś dobry i łaskawy, bogaty w miłosierdzie dla wszystkich, którzy Cię wzywają.", "ref_en": "Psalm 86:5", "ref_pl": "Psalm 86:5"}, {"text": "Я, Я Сам стираю твої провини заради Себе і не згадаю твоїх гріхів", "ref": "Ісаї 43:25", "en": "I, I am He who blots out your transgressions for My own sake, and I will not remember your sins.", "pl": "Ja, właśnie Ja, przekreślam twe przestępstwa i nie wspominam twoich grzechów.", "ref_en": "Isaiah 43:25", "ref_pl": "Izajasza 43:25"}, {"text": "Та Він сказав мені: Досить тобі Моєї благодаті, бо сила Моя виявляється в немочі", "ref": "2 Коринтян 12:9", "en": "But He said to me: My grace is sufficient for you, for My power is made perfect in weakness.", "pl": "Lecz powiedział mi: Wystarczy ci mojej łaski. Moc bowiem w słabości się doskonali.", "ref_en": "2 Corinthians 12:9", "ref_pl": "2 Koryntian 12:9"}, {"text": "Одягніться в повну Божу зброю, щоб ви могли протистояти підступам диявола", "ref": "Ефесян 6:11", "en": "Put on the full armor of God, so that you can stand against the schemes of the devil.", "pl": "Przyobleczcie pełną zbroję Bożą, abyście mogli przeciwstawić się podstępnym zakusom diabła.", "ref_en": "Ephesians 6:11", "ref_pl": "Efezjan 6:11"}, {"text": "Вас спіткала тільки людська спокуса. Але вірний Бог, Який не попустить, щоб ви були спокушувані більше, ніж можете перенести", "ref": "1 Коринтян 10:13", "en": "You are tempted only in the human way. But God is faithful and will not let you be tempted beyond what you can bear.", "pl": "Nie spotkała was pokusa ponad ludzką miarę. Bóg jest wierny i nie pozwoli was kusić ponad to, co potraficie znieść.", "ref_en": "1 Corinthians 10:13", "ref_pl": "1 Koryntian 10:13"}, {"text": "Блаженний чоловік, який витримає спокусу, бо, ставши випробуваним, він одержить вінець життя", "ref": "Якова 1:12", "en": "Blessed is the one who endures temptation, for when he has been tested, he will receive the crown of life.", "pl": "Szczęśliwy człowiek, który wytrwa w próbie, bo gdy zostanie wypróbowany, otrzyma wieniec życia.", "ref_en": "James 1:12", "ref_pl": "Jakuba 1:12"}, {"text": "Коли я йду навіть долиною тіні смерті, я не злякаюся зла, бо Ти зі мною", "ref": "Псалом 23:4", "en": "Even though I walk through the valley of the shadow of death, I will fear no evil, for You are with me.", "pl": "Choćbym przechodził przez ciemną dolinę śmierci, zła się nie ulęknę, bo Ty jesteś ze mną.", "ref_en": "Psalm 23:4", "ref_pl": "Psalm 23:4"}, {"text": "Що ж скажемо на це? Якщо Бог за нас, то хто проти нас?", "ref": "Римлян 8:31", "en": "What then shall we say to these things? If God is for us, who can be against us?", "pl": "Cóż więc na to powiemy? Jeżeli Bóg z nami, któż przeciwko nam?", "ref_en": "Romans 8:31", "ref_pl": "Rzymian 8:31"}, {"text": "Ви від Бога, дітоньки, і ви перемогли їх, бо Той, Хто у вас, більший за того, хто у світі", "ref": "1 Івана 4:4", "en": "You are from God, little children, and you have overcome them, because the One who is in you is greater than the one who is in the world.", "pl": "Wy, dzieci, jesteście z Boga i zwyciężyliście ich, ponieważ większy jest Ten, który jest w was, od tego, który jest w świecie.", "ref_en": "1 John 4:4", "ref_pl": "1 Jana 4:4"}, {"text": "Господь — моя сила і мій щит; на Нього надіялося моє серце, і Він допоміг мені", "ref": "Псалом 28:7", "en": "The Lord is my strength and my shield; my heart trusts in Him, and He helps me.", "pl": "Pan jest moją mocą i tarczą; moje serce Mu zaufało i otrzymałem pomoc.", "ref_en": "Psalm 28:7", "ref_pl": "Psalm 28:7"}, {"text": "Адже Бог дав нам не духа боягузтва, а духа сили, любові й поміркованості", "ref": "2 Тимофія 1:7", "en": "For God has not given us a spirit of fear, but of power, love, and self-control.", "pl": "Albowiem Bóg nie dał nam ducha bojaźni, lecz mocy, miłości i trzeźwego myślenia.", "ref_en": "2 Timothy 1:7", "ref_pl": "2 Tymoteusza 1:7"}, {"text": "Не військом і не силою, а Моїм Духом! — говорить Господь Саваот", "ref": "Захарії 4:6", "en": "Not by might nor by power, but by My Spirit, says the Lord Almighty.", "pl": "Nie dzięki mocy ani dzięki sile, lecz dzięki mojemu Duchowi — mówi Pan Zastępów.", "ref_en": "Zechariah 4:6", "ref_pl": "Zachariasza 4:6"}, {"text": "Усе, що дихає, хай хвалить Господа! Алілуя!", "ref": "Псалом 150:6", "en": "Let everything that has breath praise the Lord! Hallelujah!", "pl": "Niech wszystko, co żyje, chwali Pana! Alleluja!", "ref_en": "Psalm 150:6", "ref_pl": "Psalm 150:6"}, {"text": "Завжди радійте, безперестанно моліться, за все дякуйте, бо це Божа воля в Христі Ісусі щодо вас", "ref": "1 Солунян 5:16-18", "en": "Rejoice always, pray continually, give thanks in all circumstances; for this is God's will for you in Christ Jesus.", "pl": "Zawsze się radujcie, nieustannie się módlcie, w każdym położeniu dziękujcie; taka jest bowiem wola Boża w Chrystusie Jezusie względem was.", "ref_en": "1 Thessalonians 5:16-18", "ref_pl": "1 Tesaloniczan 5:16-18"}, {"text": "Прославляйте Господа, бо Він добрий, бо навіки Його милість", "ref": "Псалом 106:1", "en": "Give thanks to the Lord, for He is good; His mercy endures forever.", "pl": "Wysławiajcie Pana, bo jest dobry, bo Jego łaska trwa na wieki.", "ref_en": "Psalm 106:1", "ref_pl": "Psalm 106:1"}, {"text": "Достойний Ти, Господи і Боже наш, прийняти славу, і честь, і силу, бо Ти все створив", "ref": "Об’явлення 4:11", "en": "You are worthy, our Lord and God, to receive glory and honor and power, for You created all things.", "pl": "Godzien jesteś, Panie i Boże nasz, przyjąć chwałę, cześć i moc, bo Ty stworzyłeś wszystko.", "ref_en": "Revelation 4:11", "ref_pl": "Objawienia 4:11"}, {"text": "Небеса розповідають про Божу славу, а про витвір Його рук сповіщає небосхил", "ref": "Псалом 19:2", "en": "The heavens declare the glory of God; the skies proclaim the work of His hands.", "pl": "Niebiosa głoszą chwałę Boga, a nieboskłon obwieszcza dzieło rąk Jego.", "ref_en": "Psalm 19:2", "ref_pl": "Psalm 19:2"}, {"text": "Дякуйте Господу, бо Він добрий, бо навіки Його милість", "ref": "1 Хронік 16:34", "en": "Give thanks to the Lord, for He is good; His mercy endures forever.", "pl": "Dziękujcie Panu, bo jest dobry, bo Jego łaska trwa na wieki.", "ref_en": "1 Chronicles 16:34", "ref_pl": "1 Kronik 16:34"}, {"text": "Прийдіть, заспіваймо Господу, вигукнімо скелі нашого спасіння", "ref": "Псалом 95:1", "en": "Come, let us sing for joy to the Lord; let us shout aloud to the Rock of our salvation.", "pl": "Przyjdźcie, radośnie śpiewajmy Panu, wznośmy okrzyki ku Skale naszego zbawienia.", "ref_en": "Psalm 95:1", "ref_pl": "Psalm 95:1"}, {"text": "Радійте в Господі завжди, і знову кажу: радійте", "ref": "Филип’ян 4:4", "en": "Rejoice in the Lord always. Again I say: rejoice.", "pl": "Radujcie się zawsze w Panu; jeszcze raz powtarzam: radujcie się!", "ref_en": "Philippians 4:4", "ref_pl": "Filipian 4:4"}, {"text": "Благословлятиму Господа повсякчас, хвала Його завжди на моїх устах", "ref": "Псалом 34:2", "en": "I will bless the Lord at all times; His praise shall continually be in my mouth.", "pl": "Będę błogosławił Pana w każdym czasie, Jego chwała będzie zawsze w moich ustach.", "ref_en": "Psalm 34:2", "ref_pl": "Psalm 34:2"}, {"text": "То я буду радіти в Господі, буду ликувати в Бозі, моєму Спасителеві", "ref": "Авакума 3:18", "en": "Yet I will rejoice in the Lord; I will be joyful in God my Savior.", "pl": "Ja jednak będę się radował w Panu, będę weselił się w Bogu, moim Zbawicielu.", "ref_en": "Habakkuk 3:18", "ref_pl": "Habakuka 3:18"}, {"text": "І Я даю їм вічне життя, і вони не загинуть повік, і ніхто не викраде їх з Моїх рук", "ref": "Івана 10:28", "en": "I give them eternal life, and they shall never perish; no one will snatch them out of My hand.", "pl": "I Ja daję im życie wieczne, a nie zginą na wieki i nikt nie wyrwie ich z mojej ręki.", "ref_en": "John 10:28", "ref_pl": "Jana 10:28"}, {"text": "І Він витре кожну сльозу з їхніх очей, і смерті вже не буде, ні смутку, ні крику, ні болю вже не буде, бо колишнє минуло", "ref": "Об’явлення 21:4", "en": "He will wipe every tear from their eyes, and there will be no more death, mourning, crying or pain, for the former things have passed away.", "pl": "I otrze z ich oczu wszelką łzę, a śmierci już odtąd nie będzie. Ani żałoby, ani krzyku, ani trudu już nie będzie, bo pierwsze rzeczy przeminęły.", "ref_en": "Revelation 21:4", "ref_pl": "Objawienia 21:4"}, {"text": "І ось Я з вами по всі дні аж до кінця віку", "ref": "Матвія 28:20", "en": "And surely I am with you always, to the very end of the age.", "pl": "A oto Ja jestem z wami przez wszystkie dni, aż do skończenia świata.", "ref_en": "Matthew 28:20", "ref_pl": "Mateusza 28:20"}, {"text": "Чого око не бачило й вухо не чуло і що на серце людині не приходило, те Бог приготував тим, які люблять Його", "ref": "1 Коринтян 2:9", "en": "What no eye has seen, no ear has heard, and no human heart has conceived—these are the things God has prepared for those who love Him.", "pl": "Lecz jak napisano: Czego oko nie widziało ani ucho nie słyszało, ani serce człowieka nie zdołało pojąć, to przygotował Bóg tym, którzy Go miłują.", "ref_en": "1 Corinthians 2:9", "ref_pl": "1 Koryntian 2:9"}, {"text": "Ісус Христос учора, сьогодні й навіки Той Самий", "ref": "Євреїв 13:8", "en": "Jesus Christ is the same yesterday and today and forever.", "pl": "Jezus Chrystus wczoraj i dziś, ten sam także na wieki.", "ref_en": "Hebrews 13:8", "ref_pl": "Hebrajczyków 13:8"}];
+let lastIndex=-1;
 let currentLanguage=localStorage.getItem("language") || "uk";
 
 const languageButtons=document.querySelectorAll("[data-lang]");
-
-async function fetchJson(url){
-const response=await fetch(url);
-if(!response.ok) throw new Error("Request failed: "+response.status);
-return response.json();
-}
-
-const cache={};
-let lastVerse=null;
-
-async function getRandomVerse(){
-const book=bibleBooks[Math.floor(Math.random()*bibleBooks.length)];
-const chapter=Math.floor(Math.random()*book.chapters)+1;
-
-const data=await fetchJson(`https://api.midvash.com/v1/kjv/${book.osis}/${chapter}`);
-const payload=data.data || data;
-const verses=payload.verses || [];
-
-if(!verses.length) throw new Error("No verses found");
-
-const chosen=verses[Math.floor(Math.random()*verses.length)];
-return {
-book,
-chapter,
-verse:Number(chosen.number ?? chosen.verse),
-};
-}
-
-async function getVerseFromMidvash(version, osis, chapter, verse){
-const key=`${version}|${osis}|${chapter}|${verse}`;
-if(cache[key]) return cache[key];
-
-const data=await fetchJson(`https://api.midvash.com/v1/${version}/${osis}/${chapter}/${verse}`);
-const result=data.data || data;
-const text=result.text || result.verse?.text;
-
-if(!text) throw new Error("Verse not found");
-
-cache[key]=text;
-return text;
-}
-
-// Український текст — сучасний переклад Рафаїла Турконяка (УТТ 2011)
-async function getVerseFromTurkoniak(book, chapter, verse){
-const key=`utt|${book.en}|${chapter}|${verse}`;
-if(cache[key]) return cache[key];
-
-const data=await fetchJson(`https://bolls.life/get-verse/UTT/${encodeURIComponent(book.en)}/${chapter}/${verse}/`);
-const text=data.text || data.verse?.text;
-
-if(!text) throw new Error("Turkoniak verse not found");
-
-// Bolls може повертати HTML-розмітку — для нашої картки залишаємо чистий текст.
-const cleanText=text.replace(/<[^>]*>/g, "").replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").trim();
-cache[key]=cleanText;
-return cleanText;
-}
-
-async function getNBG(osis, chapter, verse){
-const refBook=bibleBooks.find(b=>b.osis===osis);
-if(!refBook) throw new Error("Book not found");
-
-const cacheKey=`nbg|${osis}|${chapter}|${verse}`;
-if(cache[cacheKey]) return cache[cacheKey];
-
-const ref=`${refBook.en} ${chapter}:${verse}`;
-const url="https://api.biblesupersearch.com/api?"+new URLSearchParams({
-bible:"pol_nbg",
-reference:ref,
-data_format:"minimal",
-markup:"none"
-});
-
-const data=await fetchJson(url);
-
-if(data.errors && data.errors.length) throw new Error(data.errors.join(", "));
-
-const results=data.results?.pol_nbg;
-if(!results?.length) throw new Error("NBG verse not found");
-
-const text=results[0].text;
-cache[cacheKey]=text;
-return text;
-}
-
-function getReference(book,chapter,verse,language){
-const name=language==="en" ? book.en : language==="pl" ? book.pl : book.uk;
-return `${name} ${chapter}:${verse}`;
-}
 
 function setLanguage(language){
 currentLanguage=language;
@@ -301,9 +213,80 @@ languageButtons.forEach(button=>{
 button.classList.toggle("active",button.dataset.lang===currentLanguage);
 });
 
+const kjvBookMap={
+"Буття":"genesis","Вихід":"exodus","Левит":"leviticus","Числа":"numbers",
+"Повторення Закону":"deuteronomy","Ісуса Навина":"joshua","Суддів":"judges",
+"Рут":"ruth","1 Самуїла":"1-samuel","2 Самуїла":"2-samuel","1 Царів":"1-kings",
+"2 Царів":"2-kings","1 Хронік":"1-chronicles","2 Хронік":"2-chronicles",
+"Ездри":"ezra","Неемії":"nehemiah","Естер":"esther","Йова":"job",
+"Псалом":"psalms","Приповістей":"proverbs","Екклезіаста":"ecclesiastes",
+"Пісня над піснями":"song-of-solomon","Ісаї":"isaiah","Єремії":"jeremiah",
+"Плач Єремії":"lamentations","Єзекіїля":"ezekiel","Даниїла":"daniel",
+"Осії":"hosea","Йоіла":"joel","Амоса":"amos","Овдія":"obadiah",
+"Йони":"jonah","Михея":"micah","Наума":"nahum","Авакума":"habakkuk",
+"Софонії":"zephaniah","Огія":"haggai","Захарії":"zechariah","Малахії":"malachi",
+"Матвія":"matthew","Марка":"mark","Луки":"luke","Івана":"john","Дій":"acts",
+"Римлян":"romans","1 Коринтян":"1-corinthians","2 Коринтян":"2-corinthians",
+"Галатів":"galatians","Ефесян":"ephesians","Филип’ян":"philippians",
+"Колосян":"colossians","1 Солунян":"1-thessalonians","2 Солунян":"2-thessalonians",
+"1 Тимофія":"1-timothy","2 Тимофія":"2-timothy","Тита":"titus","Филимона":"philemon",
+"Євреїв":"hebrews","Якова":"james","1 Петра":"1-peter","2 Петра":"2-peter",
+"1 Івана":"1-john","2 Івана":"2-john","3 Івана":"3-john","Юди":"jude",
+"Об’явлення":"revelation"
+};
+
+const refBookMap={
+"Псалом":"psalms","Ісаї":"isaiah","Приповістей":"proverbs","Римлян":"romans",
+"Филип’ян":"philippians","Івана":"john","1 Петра":"1-peter","Єремії":"jeremiah",
+"Ісуса Навина":"joshua","Матвія":"matthew","1 Коринтян":"1-corinthians",
+"1 Івана":"1-john","Колосян":"colossians","Ефесян":"ephesians","Галатів":"galatians",
+"Дій":"acts","Об’явлення":"revelation","Євреїв":"hebrews","Марка":"mark",
+"2 Коринтян":"2-corinthians","2 Тимофія":"2-timothy","Якова":"james",
+"Михея":"micah","Плач Єремії":"lamentations","1 Хронік":"1-chronicles",
+"Авакума":"habakkuk","Захарії":"zechariah","Повторення Закону":"deuteronomy",
+"1 Солунян":"1-thessalonians"
+};
+
+async function getBibleText(bible, ref){
+
+const cacheKey=bible+"|"+ref;
+const stored=localStorage.getItem(cacheKey);
+
+if(stored) return stored;
+
+const response=await fetch(
+"https://api.biblesupersearch.com/api?"+new URLSearchParams({
+bible:bible,
+reference:ref,
+data_format:"minimal",
+markup:"none"
+})
+);
+
+if(!response.ok) throw new Error("Bible API request failed");
+
+const data=await response.json();
+
+if(data.errors && data.errors.length){
+throw new Error(data.errors.join(", "));
+}
+
+const results=data.results && data.results[bible];
+
+if(!results || !results.length){
+throw new Error("Passage not found");
+}
+
+const text=results.map(v=>v.text).join(" ").trim();
+
+localStorage.setItem(cacheKey,text);
+return text;
+}
 async function renderVerse(){
 
-if(!lastVerse) return;
+if(lastIndex<0) return;
+
+const random=verses[lastIndex];
 
 const verse=document.getElementById("verse");
 const ref=document.getElementById("ref");
@@ -312,47 +295,53 @@ const logo=document.querySelector(".logo");
 verse.style.opacity=0;
 ref.style.opacity=0;
 
-try{
-let text;
+setTimeout(async ()=>{
+let text=random.text;
+let reference=random.ref;
 
 if(currentLanguage==="en"){
 logo.innerText="A WORD FOR YOU";
-text=await getVerseFromMidvash("kjv",lastVerse.book.osis,lastVerse.chapter,lastVerse.verse);
+try{
+text=await getBibleText("kjv",random.ref);
+reference=random.ref_en;
+}catch(error){
+text="Unable to load the King James Version. Please try again.";
+reference=random.ref_en;
+}
 }else if(currentLanguage==="pl"){
 logo.innerText="SŁOWO DLA CIEBIE";
-text=await getNBG(lastVerse.book.osis,lastVerse.chapter,lastVerse.verse);
+try{
+text=await getBibleText("pol_nbg",random.ref);
+reference=random.ref_pl;
+}catch(error){
+text="Nie udało się załadować tekstu Nowej Biblii Gdańskiej. Spróbuj ponownie.";
+reference=random.ref_pl;
+}
 }else{
 logo.innerText="СЛОВО ДЛЯ ТЕБЕ";
-text=await getVerseFromTurkoniak(lastVerse.book,lastVerse.chapter,lastVerse.verse);
 }
 
 verse.innerText=text;
-ref.innerText=getReference(lastVerse.book,lastVerse.chapter,lastVerse.verse,currentLanguage);
+ref.innerText=reference;
 
 verse.style.opacity=1;
 ref.style.opacity=1;
-}catch(error){
-verse.innerText=currentLanguage==="pl"
-?"Nie udało się załadować tekstu. Spróbuj ponownie."
-:currentLanguage==="en"
-?"Unable to load the verse. Please try again."
-:"Не вдалося завантажити вірш. Спробуйте ще раз.";
-ref.innerText=getReference(lastVerse.book,lastVerse.chapter,lastVerse.verse,currentLanguage);
-verse.style.opacity=1;
-ref.style.opacity=1;
-}
+
+},180);
 }
 
-async function newVerse(){
-try{
-lastVerse=await getRandomVerse();
+function newVerse(){
+
+let randomIndex;
+
+do{
+randomIndex=Math.floor(Math.random()*verses.length);
+}
+while(randomIndex===lastIndex && verses.length>1);
+
+lastIndex=randomIndex;
 renderVerse();
-}catch(error){
-document.getElementById("verse").innerText="Не вдалося завантажити вірш. Спробуйте ще раз.";
-console.error(error);
 }
-}
-
 newVerse();
 </script>
 
